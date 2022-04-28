@@ -48,16 +48,20 @@
 
     <!-- run the images -->
     <li>run: docker run image_name/id</li>
-    <li>interactive mode(will take STDIN): docker run -i image_name</li>
-    <li>interactive terminal(-t is for terminal): docker run -it ubuntu /bin/bash</li>
     <li>ports mapping: docker run -p host_ip:container_ip image_name</li>
     <li>run time for container: docker run ubuntu sleep 5</li>
     <li>run a cmd on running container: docker exec container_name cmds</li>
 
-    <!-- attach and dettach -->
-    <li>attach(it will take user input to quit): docker run image_name</li>
-    <li>dettach(it will run in background): docker run -d image_name </li>
-    <li>we can also attach to existing one: docker attach id (id will be generated in above cmd)</li>
+    <!-- container Modes -->
+    <li>Default Mode(we can't return to our shell prompt until the process finishes.command links the standard output (stdout), and the standard error (stderr) streams with our terminal): docker run image_name</li>
+    <!-- below three are releated -->
+    <li>Interactive Mode: docker run -it image_name</li>
+    <li>interactive(STDIN will be attached to container, terminal design is different): docker run -i image_name </li>
+    <li>terminal(will open the terminal but does not give result for cmds): docker run -t ubuntu /bin/bash</li>
+
+    <li>Attach mode(it will take user input to quit): docker run -a STDIN image_name</li>
+    <li>Dettach Mode(it will run in background): docker run -d image_name </li>
+    <li>command binds the standard input, output, or error streams with the host shell: docker attach container_id</li>
 
     <!-- logs -->
     <li>history(will show all the commands that were run against the image): docker history image_id</li>
