@@ -1,0 +1,92 @@
+<h1>Virtual Machine</h1>
+<p>It runs on top of an emulating software called the hypervisor which sit between the hardware and the virtual machine.
+    The hypervisor is the key to enable virtualization. It manages the sharing of physical resources into virtual
+    machines.
+    Each virtual machine runs its own guest operating system. They are less agile and have low portability than
+    containers.</p>
+<h1>Docker</h1>
+<p>Docker is a container management service. The keywords of Docker are develop, ship and run anywhere. The whole idea
+    of Docker is for developers to easily develop applications, ship them into containers which can then be deployed
+    anywhere.</p>
+
+<h1>container</h1>
+<p>Containers are isolated and instances of Docker images that can be run using the Docker run command. it contains there own
+    network, volumes, process
+</p>
+
+<h1>Images</h1>
+<p>An image is a combination of a file system and parameters</p>
+
+<h1>Installation</h1>
+<ul>
+    <li>Windows: use docker toolbox exe file</li>
+    <li>linux: use curl </li>
+</ul>
+
+<h1>commands</h1>
+<ul>
+    <!-- version -->
+    <li>version: docker --version</li>
+
+    <!-- hello world -->
+    <li>hello world: docker run hello-world</li>
+
+    <!-- container  -->
+    <li>list of containers(running): docker ps</li>
+    <li>list of container(running and exited): docker ps -a</li>
+    <li>stop container: docker stop container_id/name</li>
+    <li>start container: docker start container_id/name</li>
+    <li>delete stopped container: docker rm container_id/name</li>
+    <li>delete running container: docker kill container_id/name</li>
+
+    <!-- images -->
+    <li>images list: docker images</li>
+    <li>image ids list: docker images -q</li>
+    <li>inspect image config: docker inspect (image_name/id)(container_name/id)</li>
+    <li>remove image: docker rmi image_name/id</li>
+    <li>pull the image to local: docker pull image_name</li>
+
+    <!-- run the images -->
+    <li>run: docker run image_name/id</li>
+    <li>interactive mode(will take STDIN): docker run -i image_name</li>
+    <li>interactive terminal(-t is for terminal): docker run -it ubuntu /bin/bash</li>
+    <li>ports mapping: docker run -p host_ip:container_ip image_name</li>
+    <li>run time for container: docker run ubuntu sleep 5</li>
+    <li>run a cmd on running container: docker exec container_name cmds</li>
+
+    <!-- attach and dettach -->
+    <li>attach(it will take user input to quit): docker run image_name</li>
+    <li>dettach(it will run in background): docker run -d image_name </li>
+    <li>we can also attach to existing one: docker attach id (id will be generated in above cmd)</li>
+
+    <!-- logs -->
+    <li>history(will show all the commands that were run against the image): docker history image_id</li>
+    <li>logs: docker logs container_id</li>
+
+    <!-- volumes -->
+    <li>volume create: docker volume create volume_name</li>
+    <li>volume mapping: docker run -v volume_name:container_volume_name image_id</li>
+
+    <!-- ENV vaiables -->
+    docker run -e env_variable=env_variable_value image_id
+
+    <!-- create a image -->
+    <li>create image: docker build -t image_name path_for_Dockerfile</li>
+
+    <li>network mapping to host: docker run image_name --network=host</li>
+</ul>
+
+<h1>Docker File</h1>
+<ul>
+    <li>import image: FROM ubuntu: latest</li>
+    <li>run commands: RUN apt-get update</li>
+    <li>set work dir: WORKDIR folder_name</li>
+    <li>run commonds on container: CMD ["",""]</li>
+    <li>run commands on user input: ENTRYPOINT [""]</li>
+</ul>
+
+<h1>Docker composer</h1>
+<ul>
+    <li>To run multiple tasks of docker. we can automate the process</li>
+    <li>file name: file_name.yaml</li>
+</ul>
