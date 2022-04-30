@@ -107,6 +107,40 @@
     <li>** syntax: --mount type=volume,source=name_of_volume,target=docker_folder_path</li>
 
 </ul>
+
+<h1>Docker networking</h1>
+<ul>
+
+    <li>Bridge: The default network driver. If you don’t specify a driver, this is the type of network you are creating.
+         Bridge networks are usually used when your applications run in standalone containers that need to communicate</li>
+    <li>ex: docker run -dit --name busybox1 busybox, docker run -dit --name busybox2 busybox</li>
+    <li>docker network ls</li>
+    <li>docker inspect Bridge_network_id (check containers ip)</li>
+    <li>docker attach busybox2</li>
+    <li>ping busybox1_ip</li>
+    <li>The downside with the bridge driver is that it’s not recommended for production; the containers communicate 
+        via IP address instead of automatic service discovery to resolve an IP address to the container name</li>
+   
+    <li>host: host drivers use the networking provided by the host machine. And it removes network isolation between the container and the host machine where Docker is running</li>
+    <li>docker run -it -p 80:80 --network host nginx</li>
+    <li>One limitation with the host driver is that it doesn’t work on Docker desktop: you need a Linux host to use it</li>
+    <li>host network is that you can’t run multiple containers on the same host having the same port</li>
+
+
+    <li>none: none network driver does not attach containers to any network. Containers do not access the external network
+        or communicate with other containers. You can use it when you want to disable the networking on a container.</li>
+
+
+    <li>overlay: The Overlay driver is for multi-host network communication, as with Docker Swarm or Kubernetes. It allows containers across the host to communicate with each other without worrying about the setup</li>
+    <li>docker network create -d overlay my-overlay-network</li>
+
+    <li>macvlan: This driver connects Docker containers directly to the physical host network.</li>
+
+    <li>docker network help</li>
+    <li>connect container to network: docker network connect container_id</li>
+    <li>create a network: docker network create mynetwork</li>
+    <li>dicsonnect: docker network disconnect mynetwork container_id  </li>
+</ul>
 <h1>Docker File</h1>
 <ul>
     <li>import image: FROM ubuntu: latest</li>
@@ -119,6 +153,7 @@
     <li>add meta data: LABEL KEY=VALUE</li>
     <li>author name: MAINTAINER "TEST"</li>
     <li>copy and add files to image: COPY HOST_PATH IMAGE_PATH</li>
+    <li>create volumes: VOLUME ['/dash','/dash2']</li>
 </ul>
 
 <h1>Docker composer</h1>
