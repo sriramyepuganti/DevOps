@@ -83,10 +83,15 @@
 <h1>Docker File</h1>
 <ul>
     <li>import image: FROM ubuntu: latest</li>
-    <li>run commands: RUN apt-get update</li>
+    <li>run commands on existing image: RUN apt-get update</li>
     <li>set work dir: WORKDIR folder_name</li>
-    <li>run commonds on container: CMD ["",""]</li>
-    <li>run commands on user input: ENTRYPOINT [""]</li>
+    <li>run commonds when image is excuted : CMD ["",""]</li>
+    <li>run commands when image is excuted(same as CMD but it take CMD as argument): ENTRYPOINT [""]</li>
+    <li>set env variable: ENV PORT 3000</li>
+    <li>meta data releated to PORT: EXPOSE 3000</li>
+    <li>add meta data: LABEL KEY=VALUE</li>
+    <li>author name: MAINTAINER "TEST"</li>
+    <li>copy and add files to image: COPY HOST_PATH IMAGE_PATH</li>
 </ul>
 
 <h1>Docker composer</h1>
