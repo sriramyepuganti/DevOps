@@ -1,0 +1,33 @@
+version: "3.9"
+# services refer to containers' configuration
+services:
+  # container 1
+  FE:
+    # pull the image
+    image: ubuntu:latest
+    # build the image. path to Dockerfile
+    build: .
+    # define ports
+    ports:
+      - "80:80"
+    # define network
+    networks:
+      - network_name
+    volumes:
+      - /opt/path:/dash
+    depends_on:
+      - BE
+    environment:
+      - PORT: 3000
+  # container 2
+  BE:
+  # container 3
+  DB:
+
+# define volumes here
+volumes:
+
+# define networks here
+networks:
+  network_name
+
