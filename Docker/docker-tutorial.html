@@ -72,7 +72,8 @@
     <li>volume mapping: docker run -v volume_name:container_volume_name image_id</li>
 
     <!-- ENV vaiables -->
-    docker run -e env_variable=env_variable_value image_id
+    <li>docker run -e env_variable=env_variable_value image_id</li>  
+    <li>docker run --enve env_variable=env_variable_value image_id</li>
 
     <!-- create a image -->
     <li>create image: docker build -t image_name path_for_Dockerfile</li>
@@ -80,6 +81,32 @@
     <li>network mapping to host: docker run image_name --network=host</li>
 </ul>
 
+<h1>Docker volumes</h1>
+<ul>
+    <li>volumes are used to persist data from within a Docker container</li>
+    <li>There are a few different types of Docker volumes: host, anonymous, and, named</li>
+
+    <li>Anonymous volumes: The location of anonymous volumes is managed by Docker</li>
+    <li>ex: docker run -it -v /storage_name image_name</li>
+    <li>create files in above /storage_name and find that files host machine(/var/lib/docker/volumes/id_number/_data/).</li>
+    <li>drawback in Anonymous volume is we are not able to identify which containers are using this volumes</li>
+
+    <li>Named volumes: Named volumes and anonymous volumes are similar in that Docker manages where they are located. However, as you might guess, named volumes can be referred to by specific names</li>
+    <li>ex: docker run -it name:/docker_file_path image_name</li>
+    <li>create files in docker_file_path and find files in host machine(/var/lib/docker/volumes/name/_data)</li>
+
+
+    <li>Host volumes: we can define where that data has to be stored.</li>
+    <li>docker run -it -v host_path:docker_path image_name</li>
+
+    <li>** create a volume: docker volume create volume_name</li>
+    <li>** bind mounts(host volumes)</li>
+    <li>** volumes (anonymous and named)</li>
+    <li>** syntax: -v /dash or name:/dash or host_path:docker_path </li>
+    <li>** syntax: --mount type=bind,source=machine_path,target=docker_folder_path</li>
+    <li>** syntax: --mount type=volume,source=name_of_volume,target=docker_folder_path</li>
+
+</ul>
 <h1>Docker File</h1>
 <ul>
     <li>import image: FROM ubuntu: latest</li>
