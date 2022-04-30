@@ -7,7 +7,7 @@ app.get('/',(req,res)=> {
 })
 
 
-app.listen(PROCESS.ENV.PORT, ()=> {
+app.listen(process.env.PORT, ()=> {
     console.log('server started');
 })
 
