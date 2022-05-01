@@ -1,0 +1,5 @@
+<ul>
+    <li>create a network: docker network create network_name</li>
+    <li>mongo: docker run -d -p 27017:27017 --net network_name --name db mongo</li>
+    <li>mongo-express: docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_SERVER="db" --net network_name --name FE mongo-express</li>
+</ul>
