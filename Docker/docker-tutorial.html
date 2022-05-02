@@ -48,7 +48,7 @@
 
     <!-- run the images -->
     <li>run: docker run image_name/id</li>
-    <li>ports mapping: docker run -p host_ip:container_ip image_name</li>
+    <li>ports mapping(it will use bridge network): docker run -p host_ip:container_ip image_name</li>
     <li>run time for container: docker run ubuntu sleep 5</li>
     <li>run a cmd on running container: docker exec container_name cmds</li>
 
@@ -113,6 +113,8 @@
 
     <li>Bridge: The default network driver. If you don’t specify a driver, this is the type of network you are creating.
          Bridge networks are usually used when your applications run in standalone containers that need to communicate</li>
+    <li>default bridge network communicate through ip address.</li>
+    <li>if you want to use DNS use custom bridge network</li>
     <li>ex: docker run -dit --name busybox1 busybox, docker run -dit --name busybox2 busybox</li>
     <li>docker network ls</li>
     <li>docker inspect Bridge_network_id (check containers ip)</li>
@@ -123,6 +125,7 @@
    
     <li>host: host drivers use the networking provided by the host machine. And it removes network isolation between the container and the host machine where Docker is running</li>
     <li>docker run -it -p 80:80 --network host nginx</li>
+    <li>in host network -p is ignored.</li>
     <li>One limitation with the host driver is that it doesn’t work on Docker desktop: you need a Linux host to use it</li>
     <li>host network is that you can’t run multiple containers on the same host having the same port</li>
 
