@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+    mongo:
+     image: mongo
+     ports:
+      - "27017:27017"
+     networks: 
+      - db
+    mongo-express:
+     image: mongo-express
+     ports:
+      - "8081:8081"
+     depends_on: 
+      - mongo
+     networks: 
+      - db
+
+networks: 
+ db: {}
+     
+    
