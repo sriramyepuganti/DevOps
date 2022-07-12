@@ -1,0 +1,84 @@
+<p>Kubernetes is a container management technology developed in Google lab to manage containerized applications in different kind of environments such as physical, virtual, and cloud infrastructure.</p>
+
+<h1>
+    Features of Kubernetes
+</h1>
+<p>Following are some of the important features of Kubernetes.</p>
+
+<ul>
+    <li>
+        Continues development, integration and deployment
+    </li>
+    <li>
+        Containerized infrastructure
+    </li>
+    <li>
+        Application-centric management
+    </li>
+    <li>
+        Auto-scalable infrastructure
+    </li>
+    <li>
+        Environment consistency across development testing and production
+    </li>
+    <li>
+        Loosely coupled infrastructure, where each component can act as a separate unit
+    </li>
+    <li>
+        Higher density of resource utilization
+    </li>
+    <li>
+        Predictable infrastructure which is going to be created
+    </li>
+</ul>
+
+<h1>Kubernetes - Cluster Architecture</h1>
+<ul>
+    <li>pod: pod is the smallest execution unit in Kubernetes. abstraction over container.
+        usally one application per pod. each pod gets own ip address.
+    </li>
+    <li>service: Permananet ip address. lifecycle of pod and service not connected. it has 2 functionalitys. Permananet ip and load balancer </li>
+    <li>ingress: API object that provides routing rules to manage external users' access to the services</li>
+    <li>configMap: External config of your application. Don't put credentials in configmap </li>
+    <li>secrets: used to store scecrt data. base64 encoded</li>
+    <li>deployment: blue print for pods. Abstraction of pods. Dbs can't be replicated via deployment</li>
+    <li>volumes: storage in local machine or outside of k8 cluster</li>
+    <li>Replica: </li>
+    <li>statefulset: for stateful apps. access the same volume</li>
+</ul>
+
+<h1>3 process in node</h1>
+<ul>
+    <li>
+        container run time
+    </li>
+    <li>
+        kubelet: interact with both container and node. it starts pod with a container inside
+    </li>
+    <li>
+        kubeproxy: forwards the request
+    </li>
+</ul>
+
+<h1>4 process in master</h1>
+<ul>
+    <li>API server: cluster gateway, acts as gate keeper for auth</li>
+    <li>schedular: where to put the pod</li>
+    <li>control manager: detect cluster state change</li>
+    <li>etcd: it is a cluster brain. cluster changes get stored in key value pair. Application data not stroed in etcd</li>
+</ul>
+
+<p>production has multiple masters and nodes. it is diffcult to test our app. so we use minikube</p>
+<p>minikube: master and node process run in one node</p>
+<p>kubectl: enables pods to run in node.</p>
+
+<p>installation: brew install minikube</p>
+
+<h1>cmnds</h1>
+
+<ul>
+    <li>minikube start --vm-driver=hyperkit</li>
+    <li>minikube status</li>
+    <li>kubectl get nodes</li>
+    <li>kubectl get pods</li>
+</ul>
